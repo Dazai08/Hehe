@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HeHeHe!</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            height: auto;
+            width: auto;
+        }
+
+        body {
+            background-color: #f3e5ab;
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+            flex-direction: column;
+            position: relative;
+        }
+
+        .bulb {
+            position: absolute;
+            width: 70px;
+            /* Adjust size as needed */
+            height: auto;
+            animation: glow 1s infinite alternate;
+        }
+
+        .bulb-left {
+            top: -4px;
+            left: -8px;
+        }
+
+        .bulb-right {
+            top: -4px;
+            right: -8px;
+        }
+
+        @keyframes glow {
+            0% {
+                filter: brightness(0.8);
+            }
+
+            100% {
+                filter: brightness(1.5);
+            }
+        }
+
+        .container {
+            text-align: center;
+            display: none;
+            /* Initially hidden */
+            z-index: 1;
+            /* Ensure content is above other elements */
+        }
+
+        .birthday-message {
+            font-size: 33px;
+            color: #ffffff;
+            position: relative;
+            bottom: -187px;
+            left: 25px;
+            text-shadow: 0 0 5px #ffe23b, 0 0 10px #ffe657, 0 0 15px #ffe135, 0 0 20px #ffd900;
+            animation: glow 1s infinite alternate;
+        }
+
+        .cake-container {
+            position: relative;
+        }
+
+        .cake-image {
+            width: 300px;
+            /* Adjust size as needed */
+            height: auto;
+            border-radius: 10px;
+            position: relative;
+            bottom: -90px;
+            left: 25px;
+        }
+
+        .confetti-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            opacity: 0.8;
+            pointer-events: none;
+            animation: fall linear forwards;
+        }
+
+        @keyframes fall {
+            0% {
+                transform: translateY(-100vh) rotate(0deg);
+            }
+
+            100% {
+                transform: translateY(100vh) rotate(720deg);
+            }
+        }
+
+        .modal {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: rgba(255, 255, 255, 0.9);
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+        }
+
+        .modal button {
+            padding: 10px 20px;
+            font-size: 1.5em;
+            margin: 10px;
+            color: white;
+            background-color: #d5006d;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .option {
+            font-size: 30px;
+        }
+
+        /* New class for background image */
+        .bg-image {
+            background-image: url(https://specialyou.in/cdn/shop/files/71QB1_CWNhL._SL1500.jpg?v=1689915810&width=2048);
+            /* Replace with your background image URL */
+            background-size: cover;
+            background-position: center;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 0;
+            /* Behind all other elements */
+        }
+        /* Base Styles (for larger screens) */
+.birthday-message {
+    font-size: 33px; /* Larger font size for larger screens */
+}
+
+/* Media Queries for Smaller Devices */
+@media (max-width: 768px) {
+    body {
+        padding: 20px; /* Add padding to avoid edges */
+    }
+
+    .birthday-message {
+        font-size: 28px; /* Slightly smaller font size */
+        bottom: -150px; /* Adjust position */
+        left: 0; /* Center align */
+    }
+
+    .cake-image {
+        width: 250px; /* Adjust cake size */
+        height: auto;
+        bottom: -70px; /* Adjust position */
+    }
+
+    .modal h1 {
+        font-size: 1.5em; /* Adjust modal heading */
+    }
+
+    .modal button {
+        padding: 8px 16px; /* Adjust button size */
+        font-size: 1.2em; /* Adjust button text */
+    }
+}
+
+@media (max-width: 480px) {
+    .birthday-message {
+        width: 200px;
+        bottom: -100px;
+        position: relative;
+        left: 0px;
+    }
+
+    .cake-image {
+        width: 200px; /* Further adjust cake size */
+        bottom: -50px; /* Adjust position */
+    }
+
+    .modal h1 {
+        font-size: 1.2em; /* Smaller modal heading */
+    }
+
+    .modal button {
+        padding: 6px 12px; /* Smaller button size */
+        font-size: 1em; /* Adjust button text */
+    }
+
+    .option {
+        font-size: 24px; /* Adjust option text size */
+    }
+}
+
+/* Extra small devices (phones in portrait mode) */
+@media (max-width: 320px) {
+    .birthday-message {
+        font-size: 20px; /* Very small font size */
+        bottom: -100px; /* Adjust position */
+    }
+
+    .cake-image {
+        width: 180px; /* Further adjust cake size */
+        bottom: -30px; /* Adjust position */
+    }
+
+    .modal h1 {
+        font-size: 1.1em; /* Smaller modal heading */
+    }
+
+    .modal button {
+        padding: 5px 10px; /* Adjust button size */
+        font-size: 0.9em; /* Smaller button text */
+    }
+
+    .option {
+        font-size: 20px; /* Adjust option text size */
+    }
+}
+
+    </style>
+</head>
+
+<body>
+    <div class="bg-image" id="backgroundImage" style="display: none;"></div> <!-- Hidden background image -->
+    <div class="decorative-banner"></div>
+    <img src="Bulb.png" alt="Bulb Left" class="bulb bulb-left"> <!-- Replace with your left bulb image -->
+    <img src="Bulb.png" alt="Bulb Right" class="bulb bulb-right"> <!-- Replace with your right bulb image -->
+
+    <div class="modal" id="lovePrompt">
+        <h1>Do you love me?</h1>
+        <button id="yesButton">Yes</button>
+        <h1 class="option">You have no option other than Yes😝</h1>
+    </div>
+
+    <div class="container" id="birthdayContainer">
+        <div class="cake-container">
+            <h1 class="birthday-message">
+                <p>DIVYANSHI</p>
+                <p>🥰😍</p>
+            </h1>
+            <img height="100px" src="vanilla-buttercream-birthday-cake-happy-birthdayjpg-removebg-preview.png"
+                alt="Birthday Cake" class="cake-image"> <!-- Replace with your cake image URL -->
+        </div>
+        <div class="lights"></div>
+        <div class="confetti-container" id="confetti"></div>
+    </div>
+
+    <script>
+        // JavaScript code for the confetti effect
+        function createConfetti() {
+            const confettiContainer = document.getElementById('confetti');
+            const colors = ['#FFC700', '#FF3D00', '#00E676', '#2979FF', '#D5006D'];
+
+            for (let i = 0; i < 100; i++) {
+                const confetti = document.createElement('div');
+                confetti.classList.add('confetti');
+                confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                confetti.style.left = Math.random() * 100 + 'vw';
+                confetti.style.animationDuration = Math.random() * 2 + 2 + 's';
+                confetti.style.animationDelay = Math.random() * 2 + 's';
+                confettiContainer.appendChild(confetti);
+
+                // Remove confetti after animation completes
+                confetti.addEventListener('animationend', () => {
+                    confetti.remove();
+                });
+            }
+        }
+
+        // Show the birthday container and background image when the user clicks "Yes"
+        document.getElementById('yesButton').addEventListener('click', () => {
+            document.getElementById('lovePrompt').style.display = 'none';
+            document.getElementById('birthdayContainer').style.display = 'block';
+            document.getElementById('backgroundImage').style.display = 'block'; // Show background image
+            createConfetti(); // Trigger confetti when the birthday container is shown
+        });
+    </script>
+</body>
+
+</html>
